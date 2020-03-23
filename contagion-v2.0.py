@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 random.seed()
 
 population_size = 10000
-percent_isolated = 0
+percent_isolated = 90
 
 E = 3
 p = 0.1
@@ -17,6 +17,8 @@ number_of_simulations = 5
 
 time_to_symptoms = 5
 time_to_outcome = 10
+
+full_scale = True
 
 
 def run_one_day(population, E, p):
@@ -147,6 +149,12 @@ for i in range(timesteps):
 	
 plt.plot(day_numbers, number_of_infections)
 plt.plot(day_numbers, number_of_infections_w_symptoms)
+plt.title('{}% isolated, probability of transmission: {}'.format(percent_isolated, p))
+
+if full_scale:
+	plt.ylim(0,10100)
+	
+#plt.ylim(0,1000)
 
 plt.show()
 
